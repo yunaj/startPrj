@@ -56,4 +56,9 @@ public class BbsDAOImpl implements BbsDAO {
 		return sqlSession.selectList("listCriteria", pageCriteria);
 	}
 
+	@Override
+	public int countData() throws Exception {
+		return sqlSession.selectOne("countData");
+	}
+
 }

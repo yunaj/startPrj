@@ -66,5 +66,13 @@
  	]]>
  	</select>
  	
+ 	<select id="countData" resultType="int">
+ 	<![CDATA[
+ 		select 
+ 			count(bid)
+ 		from tbl_board 
+ 		where bid>0
+ 	]]>
+ 	</select>
  	
  </mapper>

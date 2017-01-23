@@ -31,7 +31,7 @@
                               <c:forEach items="${list}" var="bvo">
 	                             <tr>
 	                                 <td>${bvo.bid}</td>
-	                                 <td><a href="/bbs/read?bid=${bvo.bid}">${bvo.subject}</a></td>
+	                                 <td><a href="/bbs/read${pagingMaker.makeURI(pagingMaker.pageCriteria.page)}&bid=${bvo.bid}">${bvo.subject}</a></td>
 	                                 <td>${bvo.writer}</td>
 	                                 <td><fmt:formatDate pattern="yyyy/MM/dd HH:mm" value="${bvo.regdate}"></fmt:formatDate></td>
 	                                 <td class="numeric">${bvo.hit}</td>
@@ -39,9 +39,32 @@
                               </c:forEach>
                               </tbody>
                           </table>
-                          </section>
-                  </div><!-- /content-panel -->
-               </div><!-- /col-lg-4 -->			
+					</section>
+					
+				</div><!-- /content-panel -->
+
+				<div class="showback" align="center">
+					<div class="btn-group">
+						<c:if test="${pagingMaker.prev}">
+							<a href="list${pagingMaker.makeURI(pagingMaker.startPage-1)}">
+								<button type="button" class="btn btn-theme03">◁</button>
+							</a>
+						</c:if>
+						<c:forEach begin="${pagingMaker.startPage}"
+							end="${pagingMaker.endPage}" var="pNum">
+							<a href="list${pagingMaker.makeURI(pNum)}">
+								<button type="button"
+									class="${pagingMaker.pageCriteria.page == pNum? 'btn btn-theme' : 'btn btn-default'}">${pNum}</button>
+							</a>
+						</c:forEach>
+						<c:if test="${pagingMaker.next && pagingMaker.endPage > 0}">
+							<a href="list${pagingMaker.makeURI(pagingMaker.endPage+1)}">
+								<button type="button" class="btn btn-theme03">▷</button>
+							</a>
+						</c:if>
+					</div>
+				</div>
+			</div><!-- /col-lg-4 -->			
 		  	</div><!-- /row -->
 		  	
 		</section><! --/wrapper -->

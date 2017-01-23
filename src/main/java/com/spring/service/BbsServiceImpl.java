@@ -46,4 +46,9 @@ public class BbsServiceImpl implements BbsService {
 		return bdao.listCriteria(pageCriteria);
 	}
 
+	@Override
+	public int listCountData() throws Exception {
+		return bdao.countData();
+	}
+
 }

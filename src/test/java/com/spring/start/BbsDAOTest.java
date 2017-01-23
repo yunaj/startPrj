@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.dao.BbsDAO;
 import com.spring.vo.BbsVO;
@@ -69,7 +71,7 @@ public class BbsDAOTest {
 			logger.info(bbsVO.getBid() + " : " + bbsVO.getSubject());
 		}
 		
-	}*/
+	}
 	
 	@Test
 	public void listCriteriaTest() throws Exception {
@@ -81,6 +83,34 @@ public class BbsDAOTest {
 		for(BbsVO bvo : list) {
 			logger.info(bvo.getBid() + " : " + bvo.getSubject());
 		}
+	}
+	
+	
+	//URIComponentsBuilder를 이용하는 법 : org.springframework.web.util에 있음
+	@Test
+	public void uriTestSample() throws Exception {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.path("/bbs/read")
+				.queryParam("bid", 100)
+				.queryParam("numPerPage", 20)
+				.build();
+		
+		logger.info("/bbs/read?bid=100&numPerPage=20");
+		logger.info(uriComponents.toString());
+	}*/
+	
+	@Test
+	public void uriTest() throws Exception {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.path("/{module}/{page}")
+				.queryParam("bid", 100)
+				.queryParam("numPerPage", 20)
+				.build()
+				.expand("bbs", "read")
+				.encode();
+		
+		logger.info("/bbs/read?bid=100&numPerPage=20");
+		logger.info(uriComponents.toString());
 	}
 
 }

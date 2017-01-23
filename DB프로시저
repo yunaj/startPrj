@@ -1,0 +1,19 @@
+DELIMITER $$
+DROP PROCEDURE IF EXISTS insert_board$$
+CREATE PROCEDURE insert_board()
+BEGIN
+
+    DECLARE start INT DEFAULT 0;
+    DECLARE max INT DEFAULT 143;
+    DECLARE log_date VARCHAR(255);
+
+    WHILE (start < max) DO
+        SET log_date = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL start DAY), '%Y%m%d');
+        INSERT INTO tbl_board (bid, subject, content, hit, writer, regdate)
+        VALUE (max-start, CONCAT('test', max-start), CONCAT('CONTENTS', max-start), 0, 'MIMI', log_date);
+        SET start = start + 1;
+    END WHILE;
+END$$
+
+DELIMITER $$
+CALL insert_board() $$

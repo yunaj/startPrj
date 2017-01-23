@@ -29,8 +29,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">내용</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" name="content"
-									value="${bbsVO.content}" readonly="readonly"></textarea>
+								<textarea class="form-control" name="content" readonly="readonly">${bbsVO.content}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -54,6 +53,8 @@
 				<!-- role속성 : HTML5에 새로 추가된 속성으로, 시각장애인이 리더기를 사용해 웹페이지를 읽을 때 안내 -->
 				<form role="form">
 					<input type="hidden" name="bid" value="${bbsVO.bid}" />
+					<input type="hidden" name="page" value="${pageCriteria.page}" />
+					<input type="hidden" name="numPerPage" value="${pageCriteria.numPerPage}" />
 				</form>
 				<script>
 					$(document).ready(function(){
@@ -69,7 +70,7 @@
 							form.submit();
 						});
 						$(".btn-info").on("click", function(){
-							self.location = "/bbs/list";
+							self.location = "/bbs/list?page=${pageCriteria.page}&numPerPage=${pageCriteria.numPerPage}";
 						});						
 					});
 				</script>

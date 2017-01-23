@@ -8,7 +8,8 @@
  @ControllerAdvice : 공통의 Exception 처리 전용 객체를 사용
   - 컨트롤러에 @ControllerAdvice 어노테이션 
   - 각 메소드에 @ExceptionHandler를 이용해서 적절한 타입의 Exception 처리
-  
+ 
+ ------------------------------------------------------------------------------------------------------ 
 
 <페이징처리>
  - endPage = Math.ceil((현재 페이지번호/총 페이지 수) * 총 페이지 수)
@@ -20,3 +21,12 @@
  
  - prev = (startPage == 1) ? false : true;
  - next = (endPage * 페이지당 글 수 >= totalData) ? false : true
+ 
+ ------------------------------------------------------------------------------------------------------
+ 
+ @ModelAttribute
+ - 서브밋된 폼의 내용을 저장해서 전달받거나, 다시 뷰로 넘겨서 출력하기 위해 사용되는 오브젝트
+ - 컨트롤러가 리턴하는 모델에 파라미터로 전달한 오브젝트를 자동으로 추가
+ - 어노테이션 생략 가능
+ 	public String save(@ModelAttribute User user){ ... }  == public String save(User user){ ... }
+ - 참고 사이트 : http://kimddochi.tistory.com/87

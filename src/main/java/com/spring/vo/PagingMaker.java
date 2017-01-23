@@ -1,5 +1,8 @@
 package com.spring.vo;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PagingMaker {
 	private int totalData;
 	private int startPage;
@@ -7,7 +10,7 @@ public class PagingMaker {
 	private boolean prev;
 	private boolean next;
 	
-	private int totalPage = 10; //총 페이지 수
+	private int totalPage = 10; //보여질  페이지 개수
 	
 	private PageCriteria pageCriteria;
 	
@@ -17,10 +20,11 @@ public class PagingMaker {
 	
 	public void setTotalData(int totalData) {
 		this.totalData = totalData;
+		getPagingData();
 	}
 	
 	public void getPagingData() {
-		endPage = (int) (Math.ceil(pageCriteria.getPage() / (double)totalPage) * totalPage);
+		endPage = (int)(Math.ceil(pageCriteria.getPage() / (double)totalPage) * totalPage);
 		startPage = (endPage - totalPage) + 1;
 		int finalEndPage = (int)(Math.ceil(totalData/(double)pageCriteria.getNumPerPage()));
 		
@@ -31,7 +35,15 @@ public class PagingMaker {
 		prev = (startPage == 1) ? false : true;
 		next = (endPage * pageCriteria.getNumPerPage() >= totalData) ? false : true;
 	}
-
+	
+	public String makeURI(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("numPerPage", pageCriteria.getNumPerPage())
+				.build();
+		return uriComponents.toUriString();
+	}
+	
 	public int getStartPage() {
 		return startPage;
 	}
