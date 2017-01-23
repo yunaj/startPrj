@@ -1,0 +1,22 @@
+<예외처리>
+스프링MVC 사용시 Controller에서 Exception 처리를 위한 방법
+ - @ExceptionHandler 이용하는 방식 
+ - @ControllerAdvice 이용하는 방식 : 대체로 이 방식을 사용
+ - @ResponseStatus 이용한 http상태코드 처리 방식
+ 
+ 
+ @ControllerAdvice : 공통의 Exception 처리 전용 객체를 사용
+  - 컨트롤러에 @ControllerAdvice 어노테이션 
+  - 각 메소드에 @ExceptionHandler를 이용해서 적절한 타입의 Exception 처리
+  
+
+<페이징처리>
+ - endPage = Math.ceil((현재 페이지번호/총 페이지 수) * 총 페이지 수)
+ - startPage = (endPage - 총 페이지 수) + 1
+ 
+ //마지막 페이지의 글 수가 총 페이지 수 보다 작을 경우 endPage
+ - finalEndPage =  Math.ceil(total 글 수/페이지당 글 수)
+ - endPage : if(endPage > finalEndPage) { endPage = finalEndPage } 
+ 
+ - prev = (startPage == 1) ? false : true;
+ - next = (endPage * 페이지당 글 수 >= totalData) ? false : true
