@@ -10,8 +10,6 @@ public interface BbsDAO {
 	public BbsVO read(Integer bid) throws Exception;
 	public void update(BbsVO bvo) throws Exception;
 	public void delete(Integer bid) throws Exception;
-	public List<BbsVO> list() throws Exception;
-	public List<BbsVO> listPage(int page) throws Exception;
-	public List<BbsVO> listCriteria(PageCriteria pageCriteria) throws Exception;
+	public List<BbsVO> list(PageCriteria pageCriteria) throws Exception;
 	public int countData() throws Exception;
 }

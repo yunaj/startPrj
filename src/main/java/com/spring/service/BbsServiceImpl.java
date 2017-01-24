@@ -37,17 +37,12 @@ public class BbsServiceImpl implements BbsService {
 	}
 
 	@Override
-	public List<BbsVO> list() throws Exception {
-		return bdao.list();
+	public List<BbsVO> list(PageCriteria pageCriteria) throws Exception {
+		return bdao.list(pageCriteria);
 	}
 
 	@Override
-	public List<BbsVO> listCriteria(PageCriteria pageCriteria) throws Exception {
-		return bdao.listCriteria(pageCriteria);
-	}
-
-	@Override
-	public int listCountData() throws Exception {
+	public int countData() throws Exception {
 		return bdao.countData();
 	}
 

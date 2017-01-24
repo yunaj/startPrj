@@ -33,29 +33,9 @@
  		where bid=#{bid}
  	</delete>
  	
- 	<select id="list" resultType="BbsVO">
- 	<![CDATA[
- 		select 
- 			bid, subject, content, writer, regdate, hit
- 		from tbl_board 
- 		where bid>0 
- 		order by bid desc, regdate desc
- 	]]>
- 	</select>
- 	
- 	<select id="listPage" resultType="BbsVO">
- 	<![CDATA[
- 		select 
- 			bid, subject, content, writer, regdate, hit
- 		from tbl_board 
- 		where bid>0 
- 		order by bid desc, regdate desc 
- 		limit #{page}, 10
- 	]]>
- 	</select>
- 	
  	<!-- #{startPage}는 getStartPage()메소드를 호출하는 것과 같다 -->
- 	<select id="listCriteria" resultType="BbsVO">
+ 	<!-- ![CDATA[]는 부등호와 같은 특수 기호를 쓸 경우 사용 -->
+ 	<select id="list" resultType="BbsVO">
  	<![CDATA[
  		select 
  			bid, subject, content, writer, regdate, hit

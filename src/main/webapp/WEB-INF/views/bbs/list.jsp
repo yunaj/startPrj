@@ -17,6 +17,25 @@
                       <div class="content-panel">
                       <h4><i class="fa fa-angle-right"></i> List</h4>
                           <section id="unseen">
+                          	<form class="form-inline">
+                          		<div class="form-group">
+		                          	<select class="form-control" name="searchType" id="searchType">
+		                          		<option value="N" ${pageCriteria.searchType == null ? 'selected' : ''}>선택</option>
+		                          		<option value="S" ${pageCriteria.searchType == 'S' ? 'selected' : ''}>제목</option>
+		                          		<option value="C" ${pageCriteria.searchType == 'C' ? 'selected' : ''}>내용</option>
+		                          		<option value="W" ${pageCriteria.searchType == 'W' ? 'selected' : ''}>작성자</option>
+		                          		<option value="SC" ${pageCriteria.searchType == 'SC' ? 'selected' : ''}>제목+내용</option>
+		                          		<option value="CW" ${pageCriteria.searchType == 'CW' ? 'selected' : ''}>내용+작성자</option>
+		                          		<option value="SCW" ${pageCriteria.searchType == 'SCW' ? 'selected' : ''}>제목+내용+작성자</option>
+		                          	</select>
+	                          	</div>
+	                          	<div class="form-group">
+	                          		<input type="text" name="keyword" id="keyword" value="${pageCriteria.keyword}" class="form-control"/>
+	                          	</div>
+	                          	<div class="form-group">
+	                          		<button id="searchBtn" class="btn btn-theme">검색</button>
+	                          	</div>	                          	                          	
+                          	</form><br>
                             <table class="table table-bordered table-striped table-condensed">
                               <thead>
                               <tr>
@@ -67,7 +86,7 @@
 			</div><!-- /col-lg-4 -->			
 		  	</div><!-- /row -->
 		  	
-		</section><! --/wrapper -->
+		</section><!--/wrapper -->
       </section><!-- /MAIN CONTENT -->
       <!--main content end-->
       
@@ -77,6 +96,12 @@
 		if(result=='success'){
 			alert("처리 완료");
 		}
+		
+		/* $(document).ready(function(){
+			$("#searchBtn").on("click", function(){
+				self.location = "/bbs/list${pagingMaker.makeURI(1)}";
+			});
+		}); */
 	  </script>
       
 <%@ include file="../include/footer.jsp" %>

@@ -81,9 +81,9 @@ public class BbsController {
 		
 		//PagingMaker pagingMaker = new PagingMaker(); //매개변수에 넣는 것과 직접 생성하는 것의 차이는 무엇인가????
 		pagingMaker.setPageCriteria(pageCriteria);
-		pagingMaker.setTotalData(bsvc.listCountData());
+		pagingMaker.setTotalData(bsvc.countData());
 		
-		model.addAttribute("list", bsvc.listCriteria(pageCriteria));	
+		model.addAttribute("list", bsvc.list(pageCriteria));	
 		model.addAttribute("pagingMaker", pagingMaker);
 	}
 	

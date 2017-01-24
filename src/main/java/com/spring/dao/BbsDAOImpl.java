@@ -37,23 +37,8 @@ public class BbsDAOImpl implements BbsDAO {
 	}
 
 	@Override
-	public List<BbsVO> list() throws Exception {
-		return sqlSession.selectList("list");
-	}
-
-	@Override
-	public List<BbsVO> listPage(int page) throws Exception {
-		if(page<=0){
-			page = 1;
-		}
-		page = (page-1) * 10;
-		
-		return sqlSession.selectList("listPage", page);
-	}
-
-	@Override
-	public List<BbsVO> listCriteria(PageCriteria pageCriteria) throws Exception {
-		return sqlSession.selectList("listCriteria", pageCriteria);
+	public List<BbsVO> list(PageCriteria pageCriteria) throws Exception {
+		return sqlSession.selectList("list", pageCriteria);
 	}
 
 	@Override
