@@ -11,5 +11,5 @@ public interface BbsService {
 	public void modify(BbsVO bvo) throws Exception;
 	public void remove(Integer bid) throws Exception;
 	public List<BbsVO> list(PageCriteria pageCriteria) throws Exception;
-	public int countData() throws Exception;
+	public int countData(PageCriteria pageCriteria) throws Exception;
 }

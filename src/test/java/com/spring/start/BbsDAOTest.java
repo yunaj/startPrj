@@ -97,7 +97,7 @@ public class BbsDAOTest {
 		
 		logger.info("/bbs/read?bid=100&numPerPage=20");
 		logger.info(uriComponents.toString());
-	}*/
+	}
 	
 	@Test
 	public void uriTest() throws Exception {
@@ -111,6 +111,26 @@ public class BbsDAOTest {
 		
 		logger.info("/bbs/read?bid=100&numPerPage=20");
 		logger.info(uriComponents.toString());
+	}*/
+	
+	@Test
+	public void searchTest() throws Exception {
+		PageCriteria pc= new PageCriteria();
+		
+		pc.setPage(1);
+		pc.setKeyword("15");
+		pc.setSearchType("C");
+		
+		logger.info("*************테스트*************");
+		
+		List<BbsVO> list = bdao.list(pc);
+		
+		for(BbsVO bvo : list){
+			logger.info(bvo.getBid() + " : " + bvo.getSubject());
+		}
+		
+		logger.info("************테스트 데이터 개수************");
+		logger.info("CountData : " + bdao.countData(pc));
 	}
 
 }

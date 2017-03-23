@@ -9,7 +9,7 @@
 <script src='/resources/fullcalendar-3.1.0/lib/moment.min.js'></script>
 <script src='/resources/fullcalendar-3.1.0/lib/jquery.min.js'></script>
 <script src='/resources/fullcalendar-3.1.0/lib/jquery-ui.min.js'></script>
-<script src='/resources/fullcalendar-3.1.0/fullcalendar.min.js'></script>
+<script src='/resources/fullcalendar-3.1.0/fullcalendar.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -27,12 +27,14 @@
 			events: [
 				{
 					title: 'All Day Event',
-					start: '2016-12-01'
+					start: '2016-12-01',
+					end: '2016-12-02'
 				},
 				{
 					title: 'Long Event',
 					start: '2016-12-07',
-					end: '2016-12-10'
+					end: '2016-12-10',
+					allDay: true
 				},
 				{
 					id: 999,
@@ -50,9 +52,10 @@
 					end: '2016-12-13'
 				},
 				{
-					title: 'Meeting',
-					start: '2016-12-12T10:30:00',
-					end: '2016-12-12T12:30:00'
+					//allDay:true,
+					title: '테스트',
+					start: '2016-12-20T20:00:00',
+					end: '2016-12-21T00:00:00'
 				},
 				{
 					title: 'Lunch',

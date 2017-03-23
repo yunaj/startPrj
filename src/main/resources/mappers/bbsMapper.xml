@@ -34,25 +34,60 @@
  	</delete>
  	
  	<!-- #{startPage}는 getStartPage()메소드를 호출하는 것과 같다 -->
- 	<!-- ![CDATA[]는 부등호와 같은 특수 기호를 쓸 경우 사용 -->
+ 	<!-- ![CDATA[]]는 xml에서 부등호와 같은 특수 기호를 문자열로 인식하도록 할 때 사용 -->
+ 	<!-- 반복되는 구문은 sql-include문을 사용하여 중복작성을 피함 -->
+ 	<sql id="searchData">
+ 		<if test="searchType != null">
+ 			<choose>
+ 				 <when test='searchType == "S"'>
+ 				 	and subject like CONCAT ('%', #{keyword}, '%')
+ 				 </when>
+ 				 <when test='searchType == "C"'>
+ 				 	and content like CONCAT ('%', #{keyword}, '%')
+ 				 </when>
+ 				 <when test='searchType == "W"'>
+ 				 	and writer like CONCAT ('%', #{keyword}, '%')
+ 				 </when>
+ 				 <when test='searchType == "SC"'>
+ 				 	and (subject like CONCAT ('%', #{keyword}, '%')
+ 				 		 or content like CONCAT ('%', #{keyword}, '%')
+ 				 	)
+ 				 </when>
+ 				 <when test='searchType == "CW"'>
+ 				 	and (content like CONCAT ('%', #{keyword}, '%')
+ 				 		 or writer like CONCAT ('%', #{keyword}, '%')
+ 				 	)
+ 				 </when>
+ 				 <when test='searchType == "SCW"'>
+ 				 	and (subject like CONCAT ('%', #{keyword}, '%')
+ 				 		 or content like CONCAT ('%', #{keyword}, '%')
+ 				 		 or writer like CONCAT ('%', #{keyword}, '%')
+ 				 	)
+ 				 </when>
+ 			</choose>
+ 		</if>
+ 	</sql>
+ 	
  	<select id="list" resultType="BbsVO">
- 	<![CDATA[
  		select 
  			bid, subject, content, writer, regdate, hit
  		from tbl_board 
- 		where bid>0 
+		<![CDATA[
+		where bid>0
+		]]>
+ 		<include refid="searchData"/>
  		order by bid desc, regdate desc 
  		limit #{startPage}, #{numPerPage}
- 	]]>
  	</select>
  	
  	<select id="countData" resultType="int">
- 	<![CDATA[
  		select 
  			count(bid)
  		from tbl_board 
- 		where bid>0
- 	]]>
+ 		<![CDATA[
+		where bid>0
+		]]>
+ 		<include refid="searchData"/>
  	</select>
  	
  </mapper>

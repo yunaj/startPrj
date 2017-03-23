@@ -42,8 +42,8 @@ public class BbsServiceImpl implements BbsService {
 	}
 
 	@Override
-	public int countData() throws Exception {
-		return bdao.countData();
+	public int countData(PageCriteria pageCriteria) throws Exception {
+		return bdao.countData(pageCriteria);
 	}
 
 }

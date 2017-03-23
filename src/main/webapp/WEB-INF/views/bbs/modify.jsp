@@ -18,9 +18,11 @@
 						<i class="fa fa-angle-right"></i> Form Elements
 					</h4>
 					<form class="form-horizontal style-form" action="/bbs/modify" method="post">
+						<input type="hidden" name="bid" value="${bbsVO.bid}" />
 						<input type="hidden" name="page" value="${pageCriteria.page}" />
 						<input type="hidden" name="numPerPage" value="${pageCriteria.numPerPage}" />
-						<input type="hidden" name="bid" value="${bbsVO.bid}" />
+						<input type="hidden" name="searchType" value="${pageCriteria.searchType}" />
+						<input type="hidden" name="keyword" value="${pageCriteria.keyword}" />
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">제목</label>
 							<div class="col-sm-10">
@@ -56,7 +58,9 @@
 							$("form").submit();
 						});
 						$(".btn-info").on("click", function(){
-							self.location = "/bbs/list?page=${pageCriteria.page}&numPerPage=${pageCriteria.numPerPage}";
+							$("form").attr("action", "/bbs/list");
+							$("form").attr("method", "get");
+							$("form").submit();
 						});						
 					});
 				</script>

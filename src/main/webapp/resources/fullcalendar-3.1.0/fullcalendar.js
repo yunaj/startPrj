@@ -11105,7 +11105,7 @@ Calendar.defaults = {
 	defaultTimedEventDuration: '02:00:00',
 	defaultAllDayEventDuration: { days: 1 },
 	forceEventDuration: false,
-	nextDayThreshold: '09:00:00', // 9am
+	nextDayThreshold: '00:30:00', // 9am
 
 	// display
 	defaultView: 'month',

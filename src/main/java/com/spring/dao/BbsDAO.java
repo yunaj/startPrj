@@ -11,5 +11,5 @@ public interface BbsDAO {
 	public void update(BbsVO bvo) throws Exception;
 	public void delete(Integer bid) throws Exception;
 	public List<BbsVO> list(PageCriteria pageCriteria) throws Exception;
-	public int countData() throws Exception;
+	public int countData(PageCriteria pageCriteria) throws Exception;
 }

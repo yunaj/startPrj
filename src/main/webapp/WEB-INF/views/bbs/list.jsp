@@ -17,10 +17,13 @@
                       <div class="content-panel">
                       <h4><i class="fa fa-angle-right"></i> List</h4>
                           <section id="unseen">
+                          	<div style="float: right; margin-right: 10px; display: inline-block;">
+	                          	<button id="writeBtn" class="btn btn-warning">글쓰기</button>
+	                        </div>  
                           	<form class="form-inline">
                           		<div class="form-group">
 		                          	<select class="form-control" name="searchType" id="searchType">
-		                          		<option value="N" ${pageCriteria.searchType == null ? 'selected' : ''}>선택</option>
+		                          		<option ${pageCriteria.searchType == null ? 'selected' : ''}>선택</option>
 		                          		<option value="S" ${pageCriteria.searchType == 'S' ? 'selected' : ''}>제목</option>
 		                          		<option value="C" ${pageCriteria.searchType == 'C' ? 'selected' : ''}>내용</option>
 		                          		<option value="W" ${pageCriteria.searchType == 'W' ? 'selected' : ''}>작성자</option>
@@ -34,7 +37,7 @@
 	                          	</div>
 	                          	<div class="form-group">
 	                          		<button id="searchBtn" class="btn btn-theme">검색</button>
-	                          	</div>	                          	                          	
+	                          	</div>	                        	                          	
                           	</form><br>
                             <table class="table table-bordered table-striped table-condensed">
                               <thead>
@@ -97,11 +100,15 @@
 			alert("처리 완료");
 		}
 		
-		/* $(document).ready(function(){
+		$(document).ready(function(){
 			$("#searchBtn").on("click", function(){
-				self.location = "/bbs/list${pagingMaker.makeURI(1)}";
+				self.location = "list${pagingMaker.makeURI(1)}";
 			});
-		}); */
+			
+			$("#writeBtn").on("click", function(){
+				self.location = "write";
+			});
+		}); 
 	  </script>
       
 <%@ include file="../include/footer.jsp" %>
