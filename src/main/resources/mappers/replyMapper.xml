@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="com.spring.dao.ReplyDAO">
+  
+  	<select id="list" resultType="ReplyVO">
+  		select * from reply
+  		where bid = #{bid}
+  		order by rebid desc
+  	</select>
+  	
+  	<insert id="write">
+  		insert into reply 
+  		(bid, replyContent, replyer)
+  		values
+  		(#{bid}, #{replyContent}, #{replyer})
+  	</insert>
+  	
+  	<update id="modify">
+  		update reply 
+  		set replyContent = #{replyContent},
+  			updateDate = now()
+  		where rebid = #{rebid}
+  	</update>
+  	
+  	<delete id="delete">
+  		delete from reply 
+  		where rebid = #{rebid}
+  	</delete>
+  	
+  	<select id="listPage" resultType="ReplyVO">
+  		select * from reply
+  		where bid = #{bid}
+  		order by rebid desc
+  		limit #{pageCriteria.startPage}, #{pageCriteria.numPerPage}
+  	</select>
+  	
+  	<select id="countData" resultType="int">
+  		select count(bid) from reply
+  		where bid = #{bid}
+  	</select>
+  	
+  </mapper>

@@ -1,4 +1,4 @@
-package com.spring.start;
+package com.spring.web;
 
 import java.util.HashMap;
 import java.util.Map;

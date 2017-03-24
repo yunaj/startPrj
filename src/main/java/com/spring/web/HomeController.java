@@ -1,4 +1,4 @@
-package com.spring.start;
+package com.spring.web;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -40,5 +40,10 @@ public class HomeController {
 	@RequestMapping(value="/fullcal")
 	public String fullCal(){
 		return "fullcal";
+	}
+	
+	@RequestMapping(value="/ajaxTest")
+	public String ajaxTest(){
+		return "ajaxTest";
 	}
 }

@@ -1,3 +1,9 @@
+//Shorthand for $( document ).ready()
+$(function() {
+    console.log( "ready!" );
+});
+
+
 <예외처리>
 스프링MVC 사용시 Controller에서 Exception 처리를 위한 방법
  - @ExceptionHandler 이용하는 방식 
